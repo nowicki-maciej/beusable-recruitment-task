@@ -55,6 +55,7 @@ class RoomOccupancyServiceTest {
 				Arguments.of(new OccupancyCalculationRequest(3, 3, CUSTOMER_RATES), new OccupancyCalculationResponse(3, 3, new BigDecimal("167.99"), new BigDecimal(738))),
 				Arguments.of(new OccupancyCalculationRequest(5, 7, CUSTOMER_RATES), new OccupancyCalculationResponse(4, 6, new BigDecimal("189.99"), new BigDecimal(1054))),
 				Arguments.of(new OccupancyCalculationRequest(7, 2, CUSTOMER_RATES), new OccupancyCalculationResponse(4, 2, new BigDecimal("189.99"), new BigDecimal(583))),
+				 Arguments.of(new OccupancyCalculationRequest(1, 7, CUSTOMER_RATES), new OccupancyCalculationResponse(1, 7, new BigDecimal(45), new BigDecimal("1153.99"))),
 				// following test does not work. Having the smallest value equal to "99.99", it is impossible to get "45.99" as a result
 				// Arguments.of(new OccupancyCalculationRequest(1, 7, CUSTOMER_RATES), new OccupancyCalculationResponse(1, 7, new BigDecimal("45.99"), new BigDecimal(1153)))
 				Arguments.of(new OccupancyCalculationRequest(5, 5, emptyList()), new OccupancyCalculationResponse(0, 0, BigDecimal.ZERO, BigDecimal.ZERO)),
