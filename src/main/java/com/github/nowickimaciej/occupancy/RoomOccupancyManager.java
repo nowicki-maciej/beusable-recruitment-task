@@ -62,10 +62,17 @@ class RoomOccupancyManager {
 	private void addEconomyCustomer(BigDecimal rate) {
 		if (isEconomyRoomFree()) {
 			economyRoomOccupants.addLast(rate);
-		} else if (isPremiumRoomFree()) {
-			BigDecimal mostValuableEconomyCustomer = economyRoomOccupants.removeFirst();
-			premiumRoomOccupants.add(mostValuableEconomyCustomer);
-			economyRoomOccupants.addLast(rate);
+			return;
+		}
+
+		if (isPremiumRoomFree()) {
+			if (economyRoomOccupants.isEmpty()) {
+				premiumRoomOccupants.add(rate);
+			} else {
+				BigDecimal mostValuableEconomyCustomer = economyRoomOccupants.removeFirst();
+				premiumRoomOccupants.add(mostValuableEconomyCustomer);
+				economyRoomOccupants.addLast(rate);
+			}
 		}
 	}
 
