@@ -65,14 +65,16 @@ class RoomOccupancyManager {
 			return;
 		}
 
-		if (isPremiumRoomFree()) {
-			if (economyRoomOccupants.isEmpty()) {
-				premiumRoomOccupants.add(rate);
-			} else {
-				BigDecimal mostValuableEconomyCustomer = economyRoomOccupants.removeFirst();
-				premiumRoomOccupants.add(mostValuableEconomyCustomer);
-				economyRoomOccupants.addLast(rate);
-			}
+		if (!isPremiumRoomFree()) {
+			return;
+		}
+
+		if (economyRoomCount == 0) {
+			premiumRoomOccupants.add(rate);
+		} else {
+			BigDecimal mostValuableEconomyCustomer = economyRoomOccupants.removeFirst();
+			premiumRoomOccupants.add(mostValuableEconomyCustomer);
+			economyRoomOccupants.addLast(rate);
 		}
 	}
 
